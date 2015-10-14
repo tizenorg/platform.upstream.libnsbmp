@@ -1,0 +1,29 @@
+AC_INIT()
+
+PACKAGE_NAME=libnsbmp
+AC_SUBST(PACKAGE_NAME)
+
+PACKAGE_VERSION=0.1.1
+AC_SUBST(PACKAGE_VERSION)
+
+AM_INIT_AUTOMAKE($PACKAGE_NAME, $PACKAGE_VERSION)
+AC_CONFIG_HEADERS([config.h])
+AC_CONFIG_MACRO_DIR([m4])
+
+# Checks for programs.
+AC_PROG_CC
+AC_PROG_LIBTOOL
+
+# Checks for header files.
+AC_HEADER_STDC
+AC_CHECK_HEADERS([stdlib.h string.h])
+
+AC_CONFIG_FILES([
+libnsbmp.pc
+])
+
+AC_OUTPUT([
+Makefile
+src/Makefile
+])
+
