@@ -27,7 +27,7 @@
 	To begin decoding a BMP, the caller should initialise a
 	'bmp_bitmap_callback_vt' structure with the appropriate values necessary
 	to handle bitmap images.  Next, a 'bmp_image' structure should be
-	initialised by calling bmp_create().  This structure should then be
+	initialised by calling nsbmp_create().  This structure should then be
 	passed to bmp_analyse() along with the BMP data to process and the size
 	of this data.
 
@@ -120,7 +120,7 @@ static bmp_result bmp_decode_rle(bmp_image *bmp, uint8_t *data, int bytes, int s
 
 /**	Initialises necessary bmp_image members.
 */
-void bmp_create(bmp_image *bmp, bmp_bitmap_callback_vt *bitmap_callbacks) {
+void nsbmp_create(bmp_image *bmp, bmp_bitmap_callback_vt *bitmap_callbacks) {
 	memset(bmp, 0, sizeof(bmp_image));
 	bmp->bitmap_callbacks = *bitmap_callbacks;
 }
@@ -294,7 +294,7 @@ bmp_result ico_analyse(ico_collection *ico, size_t size, uint8_t *data) {
  * \param image		a pointer to the ICO image to be initialised
  */
 static bmp_result next_ico_image(ico_collection *ico, ico_image *image) {
-	bmp_create(&image->bmp, &ico->bitmap_callbacks);
+	nsbmp_create(&image->bmp, &ico->bitmap_callbacks);
 	image->next = ico->first;
 	ico->first = image;
 	return BMP_OK;
